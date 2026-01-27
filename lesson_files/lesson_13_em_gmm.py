@@ -23,8 +23,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
-from scipy.stats import multivariate_normal
 
 np.random.seed(0)
 
@@ -56,14 +54,24 @@ def initialize_gmm(X: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarray, np.nd
     covariances = np.array([np.eye(d) for _ in range(k)])
     return weights, means, covariances
 
+def multivariate_normal_pdf(X: np.ndarray, mean: np.ndarray, cov: np.ndarray) -> np.ndarray:
+    """Compute multivariate normal PDF for each row in X."""
+    d = mean.shape[0]
+    cov = cov + 1e-6 * np.eye(d)
+    cov_inv = np.linalg.inv(cov)
+    det = np.linalg.det(cov)
+    norm_const = 1.0 / np.sqrt(((2 * np.pi) ** d) * det)
+    diff = X - mean
+    exponent = -0.5 * np.einsum("ij,jk,ik->i", diff, cov_inv, diff)
+    return norm_const * np.exp(exponent)
+
 def e_step(X: np.ndarray, weights: np.ndarray, means: np.ndarray, covs: np.ndarray) -> np.ndarray:
     """Expectation step: compute responsibilities."""
     n = X.shape[0]
     k = weights.shape[0]
     resp = np.zeros((n, k))
     for j in range(k):
-        rv = multivariate_normal(mean=means[j], cov=covs[j])
-        resp[:, j] = weights[j] * rv.pdf(X)
+        resp[:, j] = weights[j] * multivariate_normal_pdf(X, means[j], covs[j])
     # Normalize responsibilities
     resp_sum = resp.sum(axis=1, keepdims=True)
     resp = resp / resp_sum
@@ -90,8 +98,7 @@ def log_likelihood(X: np.ndarray, weights: np.ndarray, means: np.ndarray, covs: 
     for i in range(n):
         prob = 0
         for j in range(k):
-            rv = multivariate_normal(mean=means[j], cov=covs[j])
-            prob += weights[j] * rv.pdf(X[i])
+            prob += weights[j] * multivariate_normal_pdf(X[i:i+1], means[j], covs[j])[0]
         ll += np.log(prob + 1e-15)
     return ll
 

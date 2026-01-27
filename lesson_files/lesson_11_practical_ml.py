@@ -22,8 +22,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
+from sklearn import datasets  # datasets only
 
 np.random.seed(0)
 
@@ -32,9 +31,19 @@ X_raw, y_raw = datasets.load_breast_cancer(return_X_y=True)
 X = (X_raw - X_raw.mean(axis=0)) / X_raw.std(axis=0)
 y = y_raw.reshape(-1, 1)
 
+def split_train_val_test(X: np.ndarray, y: np.ndarray, seed: int = 42) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    rng = np.random.default_rng(seed)
+    indices = rng.permutation(X.shape[0])
+    test_size = int(0.2 * X.shape[0])
+    val_size = int(0.2 * X.shape[0])
+    train_size = X.shape[0] - test_size - val_size
+    train_idx = indices[:train_size]
+    val_idx = indices[train_size:train_size + val_size]
+    test_idx = indices[train_size + val_size:]
+    return X[train_idx], X[val_idx], X[test_idx], y[train_idx], y[val_idx], y[test_idx]
+
 # Split into train (60%), validation (20%), test (20%)
-X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=0.25, random_state=42)
+X_train, X_val, X_test, y_train, y_val, y_test = split_train_val_test(X, y)
 
 print(f"Training examples: {X_train.shape[0]}, Validation: {X_val.shape[0]}, Test: {X_test.shape[0]}")
 

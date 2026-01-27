@@ -23,9 +23,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder
+from sklearn import datasets  # datasets only
 
 np.random.seed(0)
 
@@ -37,12 +35,17 @@ y_raw = digits.target.reshape(-1, 1)  # shape (1797, 1)
 # Normalize features to [0, 1]
 X = X_raw / 16.0
 
-# One‑hot encode labels
-encoder = OneHotEncoder(sparse=False, categories='auto')
-y_onehot = encoder.fit_transform(y_raw)  # shape (1797, 10)
+num_classes = int(np.max(y_raw)) + 1
+y_onehot = np.eye(num_classes)[y_raw.flatten()]
 
 # Split into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y_onehot, test_size=0.2, random_state=42)
+rng = np.random.default_rng(42)
+indices = rng.permutation(X.shape[0])
+split = int(0.8 * X.shape[0])
+train_idx = indices[:split]
+test_idx = indices[split:]
+X_train, X_test = X[train_idx], X[test_idx]
+y_train, y_test = y_onehot[train_idx], y_onehot[test_idx]
 
 print(f"Digits dataset: {X_train.shape[0]} training examples, {X_test.shape[0]} test examples.")
 

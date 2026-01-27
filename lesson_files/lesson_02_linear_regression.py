@@ -46,7 +46,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets
+from sklearn import datasets  # datasets only
 
 # Fix the random seed for reproducibility
 np.random.seed(0)

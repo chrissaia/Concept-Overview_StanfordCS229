@@ -56,3 +56,9 @@
 # of their assumptions, limitations and inner workings.  Use these notebooks as
 # a springboard to tackle real‑world problems, experiment with new ideas and
 # contribute to the ever‑evolving field of AI.
+
+
+# %%
+import numpy as np
+
+np.random.seed(0)
