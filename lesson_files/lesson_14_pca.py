@@ -22,7 +22,9 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets
+from sklearn import datasets  # datasets only
+
+np.random.seed(0)
 
 # Load digits dataset (64 features, 8x8 images)
 digits = datasets.load_digits()

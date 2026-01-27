@@ -22,7 +22,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets
+from sklearn import datasets  # datasets only
 
 np.random.seed(0)
 

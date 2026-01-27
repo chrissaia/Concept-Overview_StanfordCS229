@@ -20,7 +20,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
+from sklearn.datasets import make_blobs  # datasets only
 
 np.random.seed(0)
 
