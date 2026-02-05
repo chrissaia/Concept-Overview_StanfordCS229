@@ -1,4 +1,4 @@
-# Concept-Overview_Stanford CS229 (End-to-End Reconstruction)
+# Concept-Overview Stanford CS229 (End-to-End Reconstruction)
 
 This repository is a **ground-up reconstruction of Stanford CS229 (Machine Learning)** as a sequence of **Jupyter notebooks (Lesson 01 → Lesson 20)**.
 
