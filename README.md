@@ -116,17 +116,3 @@ jupyter lab
 | 18 | Continuous MDPs | Simulators |
 | 19 | Control | LQR |
 | 20 | Policy Search | REINFORCE |
-
----
-
-## Status
-
-- ✅ Core supervised learning complete
-- ✅ Unsupervised learning complete
-- ✅ Reinforcement learning complete
-
----
-
-## License
-
-(Add license information here)
