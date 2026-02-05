@@ -22,7 +22,6 @@ Every lesson follows the same structure:
 
 1. **Title + Goals**
 2. **Intuition / Theory**
-3. **Math** (MLE, objectives, gradients, etc.)
 4. **Minimal implementation** (NumPy-first)
 5. **High-quality visualizations**
 6. **Diagnostics / sanity checks**
@@ -46,7 +45,10 @@ We avoid library abstractions whenever possible.
 - loading datasets
 - optional baseline comparisons
 
-### 3) Visualizations
+### 3) Endless Math
+- MLE, objectives, gradients, etc.
+
+### 4) Visualizations
 Decision boundaries, probability surfaces, contours, margins, and diagnostics are part of the explanation.
 
 ---
