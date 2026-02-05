@@ -87,7 +87,7 @@ jupyter lab
 
 | Lesson | Topic | Focus |
 |------:|------|------|
-| 01 | Introduction + Least Squares | Linear regression, geometry, normal equations |
+| 01 | Introduction | No notebook needed |
 | 02 | Linear Regression | Gradient descent, SGD, bias/variance |
 | 03 | Logistic Regression + LWLR | Probabilistic view, Newton’s method |
 | 04 | Generalized Linear Models | Exponential family, link functions |
