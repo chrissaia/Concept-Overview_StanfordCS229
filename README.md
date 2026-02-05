@@ -14,26 +14,6 @@ The sequence follows Stanford Engineering Everywhere’s CS229 lecture topics an
 
 ---
 
-## What You’ll Get From Each Lesson
-
-Each notebook is standalone, but also part of a coherent sequence.
-
-Every lesson follows the same structure:
-
-1. **Title + Goals**
-2. **Intuition / Theory**
-4. **Minimal implementation** (NumPy-first)
-5. **High-quality visualizations**
-6. **Diagnostics / sanity checks**
-7. **Extensive “Key Takeaways”**  
-   - when to use the method  
-   - failure modes  
-   - bias/variance behavior  
-   - practical debugging tips  
-   - connections to later lessons  
-
----
-
 ## Repository Philosophy
 
 ### 1) Implement the CS229 Version
