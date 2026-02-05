@@ -2,7 +2,7 @@
 
 This repository is a **ground-up reconstruction of Stanford CS229 (Machine Learning)** as a sequence of **Jupyter notebooks (Lesson 01 → Lesson 20)**.
 
-This is **not** a summary repo. Each lesson is designed as a **teachable, executable chapter** with:
+Each lesson is designed as a **teachable, executable chapter** with:
 
 - deep intuition
 - correct math (CS229-style derivations)
