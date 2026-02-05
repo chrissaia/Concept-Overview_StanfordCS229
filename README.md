@@ -1,60 +1,132 @@
-# CS229 From Scratch
+# Concept-Overview — Stanford CS229 (End-to-End Notebook Reconstruction)
 
-This repository is a **from-scratch reconstruction of Stanford CS229** as a set of
-self-contained Jupyter notebooks. Each lesson follows the CS229 lecture notes
-structure and emphasizes:
+This repository is a **ground-up reconstruction of Stanford CS229 (Machine Learning)** as a sequence of **Jupyter notebooks (Lesson 01 → Lesson 20)**.
 
-- Clear notation and objective definitions.
-- NumPy-only implementations (Matplotlib for plots; pandas only when loading CSVs).
-- Visual intuition and diagnostic plots.
-- Exercises and interview-style explanations.
+This is **not** a summary repo. Each lesson is designed as a **teachable, executable chapter** with:
 
-Notebooks live in `lesson_files/` and are accompanied by their percent-format
-Python scripts in the same directory.
+- deep intuition
+- correct math (CS229-style derivations)
+- minimal but correct NumPy implementations
+- high-quality visualizations and diagnostics
+- explicit connections across lessons
 
-## Project Philosophy
+The sequence follows Stanford Engineering Everywhere’s CS229 lecture topics and handouts.
 
-- **CS229-style notation**: align symbols, objectives, and derivations with the
-  official lecture notes.
-- **From-scratch NumPy implementations**: avoid model APIs and focus on the math.
-- **Visualizations for intuition**: plots that make optimization and geometry concrete.
-- **Exercises and reflections**: reinforce key ideas and common interview questions.
+---
 
-## How to run
+## What You’ll Get From Each Lesson
+
+Each notebook is standalone, but also part of a coherent sequence.
+
+Every lesson follows the same structure:
+
+1. **Title + Goals**
+2. **Intuition / Theory**
+3. **Math** (MLE, objectives, gradients, etc.)
+4. **Minimal implementation** (NumPy-first)
+5. **High-quality visualizations**
+6. **Diagnostics / sanity checks**
+7. **Extensive “Key Takeaways”**  
+   - when to use the method  
+   - failure modes  
+   - bias/variance behavior  
+   - practical debugging tips  
+   - connections to later lessons  
+
+---
+
+## Repository Philosophy
+
+### 1) Implement the CS229 Version
+If Andrew Ng derives something a certain way, this repo implements **that version**, explains *why* it works, and shows where it fails.
+
+### 2) NumPy First
+We avoid library abstractions whenever possible.  
+`sklearn` is used only for:
+- loading datasets
+- optional baseline comparisons
+
+### 3) Debuggability Is a Feature
+Every major algorithm includes:
+- loss curves
+- sanity checks on toy data
+- at least one failure-mode demonstration
+
+### 4) Visualizations Are First-Class
+Decision boundaries, probability surfaces, contours, margins, and diagnostics are part of the explanation — not decoration.
+
+---
+
+## Quickstart
+
+### Option A — Run Locally (Recommended)
 
 ```bash
+git clone https://github.com/chrissaia/Concept-Overview_StanfordCS229
+cd Concept-Overview_StanfordCS229
+
 python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+source .venv/bin/activate   # macOS / Linux
+# .venv\Scripts\activate    # Windows
+
+pip install -U pip
+pip install numpy matplotlib jupyter scipy pandas
+```
+
+Then:
+
+```bash
 jupyter lab
 ```
 
-Open any `lesson_files/lesson_XX_*.ipynb` notebook and run cells top-to-bottom.
-All notebooks are CPU-friendly and designed to execute in under ~5 minutes.
+---
 
-## Progress
+## Lesson Map (CS229-Aligned)
 
-| Lesson | Topic | Notebook |
-| --- | --- | --- |
-| 02 | Linear regression (GD/SGD) | [lesson_02_linear_regression.ipynb](lesson_files/lesson_02_linear_regression.ipynb) |
-| 03 | Logistic regression | [lesson_03_logistic_regression.ipynb](lesson_files/lesson_03_logistic_regression.ipynb) |
-| 04 | Perceptron | [lesson_04_perceptron.ipynb](lesson_files/lesson_04_perceptron.ipynb) |
-| 05 | Generative models (GDA + Naive Bayes) | [lesson_05_generative_models.ipynb](lesson_files/lesson_05_generative_models.ipynb) |
-| 06 | Support Vector Machines | [lesson_06_svm.ipynb](lesson_files/lesson_06_svm.ipynb) |
-| 07 | Bias/variance trade-off | [lesson_07_bias_variance.ipynb](lesson_files/lesson_07_bias_variance.ipynb) |
-| 08 | Decision trees | [lesson_08_decision_trees.ipynb](lesson_files/lesson_08_decision_trees.ipynb) |
-| 09 | Neural networks | [lesson_09_neural_networks.ipynb](lesson_files/lesson_09_neural_networks.ipynb) |
-| 10 | Backpropagation | [lesson_10_backpropagation.ipynb](lesson_files/lesson_10_backpropagation.ipynb) |
-| 11 | Practical ML | [lesson_11_practical_ml.ipynb](lesson_files/lesson_11_practical_ml.ipynb) |
-| 12 | k-means clustering | [lesson_12_kmeans.ipynb](lesson_files/lesson_12_kmeans.ipynb) |
-| 13 | EM for GMMs | [lesson_13_em_gmm.ipynb](lesson_files/lesson_13_em_gmm.ipynb) |
-| 14 | PCA | [lesson_14_pca.ipynb](lesson_files/lesson_14_pca.ipynb) |
-| 15 | Reinforcement learning: value iteration | [lesson_15_reinforcement_value_iteration.ipynb](lesson_files/lesson_15_reinforcement_value_iteration.ipynb) |
-| 16 | Q-learning | [lesson_16_q_learning.ipynb](lesson_files/lesson_16_q_learning.ipynb) |
-| 17 | TD learning | [lesson_17_td_learning.ipynb](lesson_files/lesson_17_td_learning.ipynb) |
-| 18 | Policy gradients | [lesson_18_policy_gradient.ipynb](lesson_files/lesson_18_policy_gradient.ipynb) |
-| 19 | LQR | [lesson_19_lqr.ipynb](lesson_files/lesson_19_lqr.ipynb) |
-| 20 | Final overview | [lesson_20_final_overview.ipynb](lesson_files/lesson_20_final_overview.ipynb) |
+### Supervised Learning Core
 
-> Lesson 01 will be added once the introductory linear regression notebook is
-> migrated into the new `lesson_files/` structure.
+| Lesson | Topic | Focus |
+|------:|------|------|
+| 01 | Introduction + Least Squares | Linear regression, geometry, normal equations |
+| 02 | Linear Regression | Gradient descent, SGD, bias/variance |
+| 03 | Logistic Regression + LWLR | Probabilistic view, Newton’s method |
+| 04 | Generalized Linear Models | Exponential family, link functions |
+| 05 | Generative Learning | GDA, Naive Bayes |
+| 06 | Support Vector Machines | Margins, hinge loss |
+| 07 | SVM Dual + KKT | Dual formulation |
+| 08 | Kernels | Nonlinear decision boundaries |
+
+---
+
+### Unsupervised Learning
+
+| Lesson | Topic | Focus |
+|------:|------|------|
+| 12 | K-Means + EM | Clustering |
+| 13 | Gaussian Mixtures | EM |
+| 16 | PCA + ICA | Dimensionality reduction |
+
+---
+
+### Reinforcement Learning
+
+| Lesson | Topic | Focus |
+|------:|------|------|
+| 17 | MDPs | Value iteration |
+| 18 | Continuous MDPs | Simulators |
+| 19 | Control | LQR |
+| 20 | Policy Search | REINFORCE |
+
+---
+
+## Status
+
+- ✅ Core supervised learning complete
+- ✅ Unsupervised learning complete
+- ✅ Reinforcement learning complete
+
+---
+
+## License
+
+(Add license information here)
