@@ -2,7 +2,7 @@
 
 This repository is a **ground-up reconstruction of Stanford CS229 (Machine Learning)** as a sequence of **Jupyter notebooks (Lesson 01 → Lesson 20)**.
 
-Each lesson is designed as a **teachable, executable chapter** with:
+Each lesson is designed with:
 
 - deep intuition
 - correct math (CS229-style derivations)
@@ -17,7 +17,7 @@ The sequence follows Stanford Engineering Everywhere’s CS229 lecture topics an
 ## Repository Philosophy
 
 ### 1) Implement the CS229 Version
-If Andrew Ng derives something a certain way, this repo implements **that version** (or something similar), explains *why* it works, and sometimes where it fails.
+If Andrew Ng derives something a certain way, this repo implements that version (or something similar), explains *why* it works, and sometimes where it fails.
 
 ### 2) NumPy First
 We avoid library abstractions whenever possible.  
